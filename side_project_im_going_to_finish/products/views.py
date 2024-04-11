@@ -7,7 +7,7 @@ from .serializer import *
 # Create your views here.
 class product_list(APIView):
     def get(self, request):
-        output = [{"product": output.name} for output in Product.objects.all()]
+        output = [{"name": output.name, "description": output.description, "price": output.price} for output in Product.objects.all()]
         return Response(output)
     def post(self, request):
         serializer = ReactSerializer(data=request.data)
